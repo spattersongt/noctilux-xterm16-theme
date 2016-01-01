@@ -1,7 +1,7 @@
 ;;; noctilux-theme.el --- Dark theme inspired by LightTable
 
-(require 'noctilux-definitions
-         (locate-file "noctilux-definitions.el" custom-theme-load-path
+(require 'noctilux-xterm16-definitions
+         (locate-file "noctilux-xterm16-definitions.el" custom-theme-load-path
                       '("c" "")))
 
 (create-noctilux-theme)

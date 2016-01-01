@@ -55,10 +55,10 @@ the \"Gen RGB\" column in noctilux-definitions.el to improve them further."
 ;;        that Emacs seems to dislike
 (defvar noctilux-colors           ; ANSI(Noctilux terminal)
   ;; name     sRGB      Gen RGB   256       16              8
-  '((base03  "#202020" "#202020" "#202020" "brightblack"   "black")
-    (base02  "#292929" "#292929" "#292929" "black"         "black")
-    (base01  "#5f5f5f" "#5f5f5f" "#5f5f5f" "brightgreen"   "green")
+  '((base03  "#000000" "#000000" "#000000" "brightblack"   "black")
+    (base02  "#000000" "#000000" "#000000" "black"         "black")
     (base00  "#999999" "#999999" "#999999" "brightyellow"  "yellow")
+    (base01  "#AFAFD7" "#AFAFD7" "#AFAFD7" "brightyellow"  "green")         ; Comment color
     (base0   "#cccccc" "#cccccc" "#cccccc" "brightblue"    "blue")
     (base1   "#aaaaaa" "#aaaaaa" "#aaaaaa" "brightcyan"    "cyan")
     (base2   "#e9e2cb" "#e9e2cb" "#e9e2cb" "white"         "white")
@@ -67,7 +67,7 @@ the \"Gen RGB\" column in noctilux-definitions.el to improve them further."
     (orange  "#ff8888" "#ff8888" "#ff8888" "brightred"     "red")
     (red     "#ff3333" "#ff3333" "#ff3333" "red"           "red")
     (magenta "#FF1F69" "#FF1F69" "#FF1F69" "magenta"       "magenta")
-    (violet  "#ccaaff" "#ccaaff" "#ccaaff" "brightmagenta" "magenta")
+    (violet  "#afd7d7" "#afd7d7" "#afd7d7" "brightmagenta" "magenta")
     (blue    "#aaccff" "#aaccff" "#aaccff" "blue"          "blue")
     (cyan    "#aadddd" "#aadddd" "#aadddd" "cyan"          "cyan")
     (white   "#ffffff" "#ffffff" "#ffffff" "white"          "white")
@@ -75,6 +75,10 @@ the \"Gen RGB\" column in noctilux-definitions.el to improve them further."
   "This is a table of all the colors used by the Noctilux color theme. Each
    column is a different set, one of which will be chosen based on term
    capabilities, etc.")
+
+
+;; #afd7d7
+
 
 (defmacro noct-flet (specs &rest body)
   (let ((flet (if (fboundp 'cl-flet) 'cl-flet 'flet)))
@@ -633,7 +637,7 @@ the \"Gen RGB\" column in noctilux-definitions.el to improve them further."
 	     (ansi-color-names-vector . [,base02 ,red ,green ,yellow ,blue ,magenta ,cyan ,base00]))))))))
 
 (defmacro create-noctilux-theme ()
-  (let* ((theme-name 'noctilux)
+  (let* ((theme-name 'noctilux-xterm16)
          (defs (noctilux-color-definitions 'dark))
          (theme-vars (mapcar (lambda (def) (list (car def) (cdr def)))
                              (second defs)))
@@ -649,4 +653,4 @@ the \"Gen RGB\" column in noctilux-definitions.el to improve them further."
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide 'noctilux-definitions)
+(provide 'noctilux-xterm16-definitions)
